@@ -1,0 +1,176 @@
+{% extends 'base.html' %}
+{% block body %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+        <!-- Page Title Section Start -->
+        <div class="page-title-section section">
+            <div class="page-title">
+           
+            </div>
+            <div class="page-breadcrumb">
+                <div class="container">
+                    <ul class="breadcrumb">    
+                        <li><a href="{% url 'home:index' %}">{% trans "Home" %}</a></li>
+                        <li class="current">{% trans "Media" %}</li>
+        
+                    </ul>
+                </div>
+            </div>
+        </div>        <!-- Page Title Section End -->
+        <!-- Blog Section Start -->
+        <div class="section  fix">
+            <div class="container">
+                <div class="row max-mb-n50">
+
+                    <div class="col-lg-12 col-12 order-lg-1 max-mb-50">
+                        <!-- Blog Wrapper Start -->
+                        <div class="row row-cols-1 g-0">
+
+                            <!-- Blog Start -->
+                            <div class=" col" data-aos="fade-up">
+
+                                {% for item in media_bg %}
+
+                                <!-- Page Banner Section Start -->
+                                <div class="page-banner-section section overlay section-padding"
+                                    data-bg-image="{{ item.bg_image_story.url}}">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="page-banner-title ashor-banner-title">
+                                                    <h1 class="title" style="padding: 50px;">
+                                                    </h1>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+
+                                <!-- Page Banner Section End -->
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Blog End -->
+
+
+                </div>
+                <!-- Blog Wrapper End -->
+            </div>
+
+
+        </div>
+    </div>
+
+    <!-- Blog Section End -->
+
+
+    <!-- media Section Start -->
+    <div class="section section-padding-bottom" style="padding-top: 50px;">
+        <div class="container">
+
+            <!-- media Top Bar Start -->
+            <div class="row justify-content-between align-items-center max-mb-20">
+                <div class="col-sm-auto col-12 max-mb-10">
+                  <p class="result-count">{% trans "We found" %} <span>{{media|length}}</span> {% trans "blogs available for you" %}</p>
+                </div>
+                
+                <div class="col-sm-auto col-12 max-mb-10">
+                  <div class="col-sm-auto col-12 max-mb-10">
+                    <div class="col-sm-auto col-12 max-mb-10">
+                        {% if LANGUAGE_CODE == 'en' %}
+                    <select class="sort-by" onchange="location = this.value;">
+                      {% elif LANGUAGE_CODE == 'ar' %} 
+                      <select class="sort-by-arabic" onchange="location = this.value;">
+                        {% endif %}  
+                                 <option value="{% url 'media:media_filter' %}">{% trans "Default" %}</option>
+                        <option value="{% url 'media:media_filter' %}?order=popularity">{% trans "Popularity" %}</option>
+                        <option  value="{% url 'media:media_filter' %}?order=latest">{% trans "Latest" %}</option>
+                        <optgroup label="__">
+                          {% for category in categories  %}
+                        <option value="{% url 'media:media_filter' %}?category={{category}}">
+                          {% if LANGUAGE_CODE == 'en' %}
+                            {{ category.en_name }}
+                          {% elif LANGUAGE_CODE == 'ar' %} 
+                            {{ category.ar_name }}
+                            {% elif LANGUAGE_CODE == 'de' %} 
+                            {{ category.dr_name }}
+                          {% endif %}
+                        </option></a>
+                        {% endfor %}
+                      </optgroup>
+            
+                        
+                      </select>
+                    </div>
+                   
+                    
+                  </div>
+          
+                  
+                </div>
+              </div>
+            <div class="section section-fluid section-padding">
+                <div class="container">
+                   
+                    <div class="row row-cols-xl-4 row-cols-lg-2 row-cols-md-2 row-cols-1 max-mb-n30">
+                        {% for item in media  %}
+
+                        <div class="col max-mb-30">
+                            <div class="media-6">
+                                <div class="thumbnail">
+                                    <a class="image" href="{% url 'media:media_detail' id=item.id %}">
+                                        <img src="{{item.media_image.url}}" alt="" height="350px" style="object-fit: cover;" >
+                                        <div class="media-overlay-bg"></div>
+                                    </a>
+                                </div>
+                                <div class="info">
+                                    <div class="media-caption-main">
+                                        <a class="category" style="color: white;"> {% if LANGUAGE_CODE == 'en' %}{{ item.category.en_name }}
+                                            {% elif LANGUAGE_CODE == 'ar' %} {{ item.category.ar_name }}
+                                            {% elif LANGUAGE_CODE == 'de' %} {{ item.category.dr_name }}{% endif %}</a>
+                                        <ul class="meta">
+                                            <li><i class="far fa-map-marker-alt"></i> {% if LANGUAGE_CODE == 'en' %}{{ item.media_location }}
+                                                {% elif LANGUAGE_CODE == 'ar' %} {{ item.media_location_ar }}
+                                                {% elif LANGUAGE_CODE == 'de' %} {{ item.media_location_dr }}{% endif %}</li>
+                                            <li><i class="far fa-calendar"></i>{{ item.date }}</li>
+                                        </ul>
+                                        <h3 class="title"><a href="{% url 'media:media_detail' item.id %}"> {% if LANGUAGE_CODE == 'en' %}{{ item.media_name }}
+                                            {% elif LANGUAGE_CODE == 'ar' %} {{ item.media_name_ar }}
+                                            {% elif LANGUAGE_CODE == 'de' %} {{ item.media_name_dr }}{% endif %}</a></h3>
+                                    </div>
+                                    <div class="media-caption-collapse">
+                                       
+                                        <div class="desc">
+                                            <p style="  display: -webkit-box;
+                                            -webkit-line-clamp: 3;
+                                            -webkit-box-orient: vertical;
+                                            overflow: hidden;"> {% if LANGUAGE_CODE == 'en' %}{{ item.media_desc1 }}
+                                                {% elif LANGUAGE_CODE == 'ar' %} {{ item.media_desc1_ar }}
+                                                {% elif LANGUAGE_CODE == 'de' %} {{ item.media_desc1_dr }}{% endif %}…</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor  %}
+
+    
+                    </div>
+    
+                </div>
+            </div>
+      
+        
+
+        </div>
+    </div>
+    <!-- media Section End -->
+
+    <!-- About Event Section End -->
+    {% endblock body %}

@@ -1,0 +1,285 @@
+
+{% extends 'base.html' %}
+{% block body %}
+{% load static %}
+
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+        <div class="page-title-section section">
+            <div class="page-title">
+
+            </div>
+            <div class="page-breadcrumb">
+                <div class="container">
+                    <ul class="breadcrumb">
+                        <li><a href="{% url 'home:index' %}">{% trans "Home" %}</a></li>
+        
+                        <li class="current">{% trans "Get invloved" %}</li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Page Title Section End -->
+        <!-- Blog Section Start -->
+        {% for item in data %}
+
+        <div class="section  fix">
+            <div class="container">
+                <div class="row max-mb-n50">
+
+                    <div class="col-lg-12 col-12 order-lg-1 max-mb-50">
+                        <!-- Blog Wrapper Start -->
+                        <div class="row row-cols-1 g-0">
+
+                            <!-- Blog Start -->
+                            <div class=" col" data-aos="fade-up">
+
+                                <!-- Page Banner Section Start -->
+                                <div class="page-banner-section section overlay section-padding"
+                                    data-bg-image="{{item.image_bg_get_involved}}">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="page-banner-title ashor-banner-title"
+                                                    style="padding: 50px;">
+
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Page Banner Section End -->
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Blog End -->
+
+
+                </div>
+                <!-- Blog Wrapper End -->
+            </div>
+
+
+        </div>
+        <!-- Feature Section Start -->
+        <div class="section" style="padding-top: 50px;">
+            <div class="container">
+
+                <!-- Section Title Start -->
+                <div class="gradation-process-section section section-padding">
+                    <div class="container">
+
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="gradation-title-wrapper mb-50">
+                                    <!-- Section Title Start -->
+                                    <div class="section-title text-left mb-0" data-aos="fade-up">
+                                        <h2 class="title">3 {% trans "Steps to be" %} <span> {% trans "part of Ashor" %}
+                                                <br> {% trans "Non-Governmental Organization" %}</span> </h2>
+                                    </div>
+                                    <!-- Section Title End -->
+
+
+                                    <div class="gradation-sub-heading" data-aos="fade-up">
+                                        <h3 class="heading"><mark>03</mark> {% trans "Steps" %}</h3>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="ht-gradation style-01">
+                                    <!-- Single item gradation Start -->
+                                    <div class="item item-1" data-aos="fade-up">
+                                        <div class="line"></div>
+                                        <div class="circle-wrap">
+                                            <div class="mask">
+                                                <div class="wave-pulse wave-pulse-1"></div>
+                                                <div class="wave-pulse wave-pulse-2"></div>
+                                                <div class="wave-pulse wave-pulse-3"></div>
+                                            </div>
+
+                                            <h6 class="circle">C</h6>
+                                        </div>
+
+                                        <div class="content-wrap">
+
+                                          <a href="{% url 'get_involved:career_list' %}">  <h5 class="heading">{% trans "Career opportunities" %}</h5></a>
+
+                                            <div class="text">{% if LANGUAGE_CODE == 'en' %} {{item.career_text}}
+                                                {% elif LANGUAGE_CODE == 'ar' %} {{item.career_text_ar}}
+                                                {% elif LANGUAGE_CODE == 'de' %} {{item.career_text_dr}} {% endif %}</div>
+
+                                        </div>
+                                    </div>
+                                    <!-- Single item gradation End -->
+
+                                    <!-- Single item gradation Start -->
+                                    <div class="item item-1" data-aos="fade-up">
+                                        <div class="line"></div>
+                                        <div class="circle-wrap">
+                                            <div class="mask">
+                                                <div class="wave-pulse wave-pulse-1"></div>
+                                                <div class="wave-pulse wave-pulse-2"></div>
+                                                <div class="wave-pulse wave-pulse-3"></div>
+                                            </div>
+
+                                            <h6 class="circle">V</h6>
+                                        </div>
+
+                                        <div class="content-wrap">
+
+                                            <a href="{% url 'get_involved:volunteer' %}"> <h5 class="heading">{% trans "Join us as Volunteers" %}</h5></a>
+
+                                            <div class="text">{% if LANGUAGE_CODE == 'en' %} {{item.Volunteers_text}}
+                                                {% elif LANGUAGE_CODE == 'ar' %} {{item.Volunteers_text_ar}}
+                                                {% elif LANGUAGE_CODE == 'de' %} {{item.Volunteers_text_dr}} {% endif %}</div>
+                                        </div>
+                                    </div>
+                                    <!-- Single item gradation End -->
+
+                                    <!-- Single item gradation Start -->
+                                    <div class="item item-1" data-aos="fade-up">
+                                        <div class="line"></div>
+                                        <div class="circle-wrap">
+                                            <div class="mask">
+                                                <div class="wave-pulse wave-pulse-1"></div>
+                                                <div class="wave-pulse wave-pulse-2"></div>
+                                                <div class="wave-pulse wave-pulse-3"></div>
+                                            </div>
+
+                                            <h6 class="circle">D</h6>
+                                        </div>
+
+                                        <div class="content-wrap">
+
+                                            <a href="{% url 'get_involved:donate' %}"><h5 class="heading">{% trans "Donate" %}</h5></a>
+
+                                            <div class="text">{% if LANGUAGE_CODE == 'en' %} {{item.Donate_text}}
+                                                {% elif LANGUAGE_CODE == 'ar' %} {{item.Donate_text_ar}}
+                                                {% elif LANGUAGE_CODE == 'de' %} {{item.Donate_text_dr}}  {% endif %} </div>
+
+                                        </div>
+                                    </div>
+                                    <!-- Single item gradation End -->
+
+                                    <!-- Single item gradation Start -->
+                                    <div class="item item-1" data-aos="fade-up">
+                                        <div class="line"></div>
+                                        <div class="circle-wrap">
+                                            <div class="mask">
+                                                <div class="wave-pulse wave-pulse-1"></div>
+                                                <div class="wave-pulse wave-pulse-2"></div>
+                                                <div class="wave-pulse wave-pulse-3"></div>
+                                            </div>
+
+                                        </div>
+
+
+                                    </div>
+                                    <!-- Single item gradation End -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+        {% endfor %}
+
+        <div class="about-section section" style="padding: 50px;">
+            <div class="container">
+    
+    
+                <div class="row">
+                    <div class="col-12">
+                        <div class="event-content">
+    
+    
+    
+    
+    
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section section-padding-bottom" style="padding-top: 50px;">
+            <div class="container">
+    
+                <!--  media Bar Start -->
+                <div class="row justify-content-between align-items-center max-mb-20">
+                    <div class="col-sm-auto col-12 max-mb-10">
+                        <p class="result-count">{% trans "Latest Media" %}</p>
+                    </div>
+    
+                </div>
+                <!-- media Top Bar End -->
+    
+                <!-- media  Start -->
+                <div class="row row-cols-xl-4 row-cols-lg-2 row-cols-md-2 row-cols-1 max-mb-n30">
+                    {% for item in media  %}
+                    {% if forloop.counter < 5 %} 
+                    <div class="col max-mb-30">
+                        <div class="media-6">
+                            <div class="thumbnail">
+                                <a class="image" href="{% url 'media:media_detail' item.id %}">
+                                    <img src="{{item.media_image.url}}" height="350px" style="object-fit: cover;" alt="">
+                                    <div class="media-overlay-bg"></div>
+                                </a>
+                            </div>
+                            <div class="info">
+                                <div class="media-caption-main">
+                                    <a class="category" style="color: white;"> {% if LANGUAGE_CODE == 'en' %}{{ item.category.en_name }}
+                                        {% elif LANGUAGE_CODE == 'ar' %} {{ item.category.ar_name }}
+                                        {% elif LANGUAGE_CODE == 'de' %} {{ item.category.dr_name }}{% endif %}</a>
+                                    <ul class="meta">
+                                        <li><i class="far fa-map-marker-alt"></i> {% if LANGUAGE_CODE == 'en' %}{{ item.media_location }}
+                                            {% elif LANGUAGE_CODE == 'ar' %} {{ item.media_location_ar }}
+                                            {% elif LANGUAGE_CODE == 'de' %} {{ item.media_location_dr }}{% endif %}</li>
+                                        <li><i class="far fa-calendar"></i>{{item.date|date:'d M o'}}</li>
+                                    </ul>
+                                    <h3 class="title"><a href="{% url 'media:media_detail' item.id %}"> {% if LANGUAGE_CODE == 'en' %}{{ item.media_name }}
+                                        {% elif LANGUAGE_CODE == 'ar' %} {{ item.media_name_ar }}
+                                        {% elif LANGUAGE_CODE == 'de' %} {{ item.media_name_dr }}{% endif %}</a></h3>
+                                </div>
+                                <div class="media-caption-collapse">
+                                   
+                                    <div class="desc">
+                                        <p> {% if LANGUAGE_CODE == 'en' %}{{ item.media_desc1 }}
+                                            {% elif LANGUAGE_CODE == 'ar' %} {{ item.media_desc1_ar }}
+                                            {% elif LANGUAGE_CODE == 'de' %} {{ item.media_desc1_dr }}{% endif %}…</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    
+                    </div>
+                 
+                    {% endif %} {% endfor %}
+    
+    
+                </div>
+                <!-- media  End -->
+    
+    
+                <div class="row max-mt-50">
+                    <div class="col text-center">
+                        <a href="{% url 'media:media' %}" class="btn btn-outline-primary load-more-btn">{% trans "Read More" %} <i
+                                class="far fa-long-arrow-right ms-3"></i></a>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+        {% endblock body %}

@@ -1,0 +1,255 @@
+{% extends 'base.html' %}
+{% block body %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+   <!-- Page Title Section Start -->
+ <div class="page-title-section section">
+  <div class="page-title">
+ 
+  </div>
+  <div class="page-breadcrumb">
+      <div class="container">
+          <ul class="breadcrumb">
+            <li><a href="{% url 'home:index' %}">{% trans "Home" %}</a></li>
+
+              <li class="current">{% trans "Contact us" %}</li>
+
+          </ul>
+      </div>
+  </div>
+</div>
+<!-- Page Title Section End -->
+<!-- Blog Section Start -->
+<div class="section  fix">
+  <div class="container">
+      <div class="row max-mb-n50">
+
+          <div class="col-lg-12 col-12 order-lg-1 max-mb-50">
+              <!-- Blog Wrapper Start -->
+              <div class="row row-cols-1 g-0">
+
+                  <!-- Blog Start -->
+                  <div class=" col" data-aos="fade-up">
+
+                    {% for item in data %}
+                      <!-- Page Banner Section Start -->
+                      <div class="page-banner-section section overlay section-padding"
+                          data-bg-image="{{item.contact_bg_image.url}}">
+                          <div class="container">
+                              <div class="row">
+                                  <div class="col-12">
+                                      <div class="page-banner-title ashor-banner-title">
+                                          <h1 class="title" style="padding: 50px;">
+                                          </h1>
+                                      </div>
+
+
+                                  </div>
+                              </div>
+                          </div>
+                      </div>  {% endfor %}
+                      <!-- Page Banner Section End -->
+
+
+
+                  </div>
+              </div>
+          </div>
+          <!-- Blog End -->
+
+
+      </div>
+      <!-- Blog Wrapper End -->
+  </div>
+
+
+</div>
+
+
+  <!-- Page Title Section End -->
+         <!-- Contact Information Section Start -->
+         <div class="contact-information-section section section-padding-bottom" style="padding-top: 50px;">
+          <div class="container">
+              <div class="row margin-bottom-85">
+                  <div class="col-12">
+                      <div class="contact-title max-width-740">
+                      </div>
+                  </div>
+              </div>
+              <div class="row row-30 row-cols-lg-3 row-cols-md-2 row-cols-1 max-mb-n30">
+                  <div class="col max-mb-30">
+                      <!-- Single Contact Info Start -->
+                      <div class="contact-info">
+                          <div class="icon">
+                              <i class="fal fa-map-marker-alt"></i>
+                          </div>
+                          <div class="info">
+                              <h4 class="title"> {% trans "Address" %}</h4>
+                              <span class="info-text"> {% trans "Kirkuk - Soma city" %}</span>
+                          </div>
+                      </div>
+                      <!-- Single Contact Info End -->
+                  </div>
+                  <div class="col max-mb-30">
+                      <!-- Single Contact Info Start -->
+                      <div class="contact-info">
+                          <div class="icon">
+                              <i class="fal fa-phone"></i>
+                          </div>
+                          <div class="info">
+                              <h4 class="title"> {% trans "Contact" %}</h4>
+                              <span class="info-text"> {% trans "Mobile" %}: <strong>(+964 771 577 5521) </strong> 
+                                 
+                              </span>
+                          </div>
+                      </div>
+                      <!-- Single Contact Info End -->
+                  </div>
+                  <div class="col max-mb-30">
+                      <!-- Single Contact Info Start -->
+                      <div class="contact-info">
+                          <div class="icon">
+                              <i class="fal fa-map-marker-alt"></i>
+                          </div>
+                          <div class="info">
+                              <h4 class="title">{% trans "Email" %}</h4>
+                              <span class="info-text">  {% trans "Mail" %}: <a href="mailto:info@ashuor.org">info@ashuor.org</a>
+                              </span>
+                          </div>
+                      </div>
+                      <!-- Single Contact Info End -->
+                  </div>
+              </div>
+          </div>
+      </div>
+      <!-- Contact Information Section End -->
+
+      <!--Google Map Area Start-->
+      <div class="google-map-area section text-center">
+          <div class="container">
+              <div class="contact-map-area">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3248.039844998417!2d44.428744075090044!3d35.50329297264508!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzXCsDMwJzExLjkiTiA0NMKwMjUnNTIuOCJF!5e0!3m2!1sen!2siq!4v1688228589731!5m2!1sen!2siq" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+          </div>
+      </div>
+      <!--Google Map Area Start-->
+
+      <!-- Contact Form Section Start -->
+      <div class="contact-form-section section section-padding">
+          <div class="container">
+              <div class="row">
+                  <div class="offset-lg-2 col-lg-8">
+                      <div class="contact-title max-width-600">
+                      </div>
+                      <div class="contact-form">
+                          <form action="assets/php/contact-mail.php" id="contact-form" method="post">
+                              <div class="row max-mb-n30">
+                                  <div class="col-md-6 col-12 max-mb-30">
+                                      <input type="text" placeholder="Your Name *" name="name">
+                                  </div>
+                                  <div class="col-md-6 col-12 max-mb-30">
+                                      <input type="email" placeholder="Email *" name="email">
+                                  </div>
+                                  <div class="col-md-12 col-12 max-mb-30">
+                                      <input type="text" placeholder="Subject *" name="subject">
+                                  </div>
+                                  <div class="col-12 max-mb-30">
+                                      <textarea name="message" placeholder="Message"></textarea>
+                                  </div>
+                                  <div class="col-12 text-center max-mb-30">
+                                      <button class="btn btn-primary btn-hover-secondary btn-width-180 btn-height-60">{% trans "Submit" %}</button>
+                                  </div>
+                              </div>
+                          </form>
+                          <p class="form-messege"></p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="about-section section" style="padding: 50px;">
+          <div class="container">
+  
+  
+              <div class="row">
+                  <div class="col-12">
+                      <div class="event-content">
+  
+  
+  
+  
+  
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="section section-padding-bottom" style="padding-top: 50px;">
+        <div class="container">
+
+            <!--  media Bar Start -->
+            <div class="row justify-content-between align-items-center max-mb-20">
+                <div class="col-sm-auto col-12 max-mb-10">
+                    <p class="result-count">{% trans "Latest Media" %}</p>
+                </div>
+
+            </div>
+            <!-- media Top Bar End -->
+
+            <!-- media  Start -->
+            <div class="row row-cols-xl-4 row-cols-lg-2 row-cols-md-2 row-cols-1 max-mb-n30">
+                {% for item in media  %}
+                {% if forloop.counter < 5 %} 
+                <div class="col max-mb-30">
+                    <div class="media-6">
+                        <div class="thumbnail">
+                            <a class="image" href="{% url 'media:media_detail' item.id %}">
+                                <img src="{{item.media_image.url}}" height="350px" style="object-fit: cover;" alt="">
+                                <div class="media-overlay-bg"></div>
+                            </a>
+                        </div>
+                        <div class="info">
+                            <div class="media-caption-main">
+                                <a class="category" style="color: white;"> {% if LANGUAGE_CODE == 'en' %}{{ item.category.en_name }}
+                                    {% elif LANGUAGE_CODE == 'ar' %} {{ item.category.ar_name }}
+                                    {% elif LANGUAGE_CODE == 'de' %} {{ item.category.dr_name }}{% endif %}</a>
+                                <ul class="meta">
+                                    <li><i class="far fa-map-marker-alt"></i> {% if LANGUAGE_CODE == 'en' %}{{ item.media_location }}
+                                        {% elif LANGUAGE_CODE == 'ar' %} {{ item.media_location_ar }}
+                                        {% elif LANGUAGE_CODE == 'de' %} {{ item.media_location_dr }}{% endif %}</li>
+                                    <li><i class="far fa-calendar"></i>{{item.date|date:'d M o'}}</li>
+                                </ul>
+                                <h3 class="title"><a href="{% url 'media:media_detail' item.id %}"> {% if LANGUAGE_CODE == 'en' %}{{ item.media_name }}
+                                    {% elif LANGUAGE_CODE == 'ar' %} {{ item.media_name_ar }}
+                                    {% elif LANGUAGE_CODE == 'de' %} {{ item.media_name_dr }}{% endif %}</a></h3>
+                            </div>
+                            <div class="media-caption-collapse">
+                               
+                                <div class="desc">
+                                    <p> {% if LANGUAGE_CODE == 'en' %}{{ item.media_desc1 }}
+                                        {% elif LANGUAGE_CODE == 'ar' %} {{ item.media_desc1_ar }}
+                                        {% elif LANGUAGE_CODE == 'de' %} {{ item.media_desc1_dr }}{% endif %}…</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+             
+                {% endif %} {% endfor %}
+
+
+            </div>
+            <!-- media  End -->
+
+
+            <div class="row max-mt-50">
+                <div class="col text-center">
+                    <a href="{% url 'media:media' %}" class="btn btn-outline-primary load-more-btn">{% trans "Read More" %} <i
+                            class="far fa-long-arrow-right ms-3"></i></a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    {% endblock body %} 

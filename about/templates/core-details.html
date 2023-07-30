@@ -1,0 +1,212 @@
+{% extends 'base.html' %}
+{% block body %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+<div class="page-title-section section">
+    <div class="page-title">
+
+    </div>
+    <div class="page-breadcrumb">
+        <div class="container">
+            <ul class="breadcrumb">
+                <li><a href="{% url 'home:index' %}">{% trans "Home" %}</a></li>
+                <li><a href="{% url 'about:about' %}">{% trans "About Ashor" %}</a></li>
+
+                <li class="current">{% if LANGUAGE_CODE == 'en' %}{{core.core_name}}
+                    {% elif LANGUAGE_CODE == 'ar' %}{{core.core_name_ar}}
+                    {% elif LANGUAGE_CODE == 'de' %}{{core.core_name_dr}}{% endif %}</li>
+
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- Page Title Section End -->
+
+
+<div class="section section-padding">
+    <div class="container">
+        <div class="row max-mb-n50">
+
+            <div class="col-lg-12 col-12 order-lg-1 max-mb-50">
+                <div>
+                    <div class="course-instructor">
+                        <div class="row">
+                            <div class="col-md-3 col-sm-12 ">
+                                <div class="profile-image">
+                                    <img src="{{core.core_image.url}}" alt="profile">
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="profile-info">
+                                    <h5 style="padding-top: 20px;"><a href="">{% if LANGUAGE_CODE == 'en' %}{{core.core_name}}
+                                        {% elif LANGUAGE_CODE == 'ar' %}{{core.core_name_ar}}
+                                        {% elif LANGUAGE_CODE == 'de' %}{{core.core_name_dr}}{% endif %}</a></h5>
+                                    <div class="author-career">/{% if LANGUAGE_CODE == 'en' %}{{core.core_position}}
+                                        {% elif LANGUAGE_CODE == 'ar' %}{{core.core_position_ar}}
+                                        {% elif LANGUAGE_CODE == 'de' %}{{core.core_position_dr}}{% endif %}</div>
+                                    <p class="author-bio">{% if LANGUAGE_CODE == 'en' %}{{core.core_desc}}
+                                        {% elif LANGUAGE_CODE == 'ar' %}{{core.core_desc_ar}}
+                                        {% elif LANGUAGE_CODE == 'de' %}{{core.core_desc_dr}}{% endif %}</p>
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+<div class="section  fix">
+    <div class="container">
+        <div class="row max-mb-n80">
+
+            <div class=" col-lg-12 col-12 max-mb-50">
+                <!-- Blog Wrapper Start -->
+                <div class="row row-cols-1 g-0">
+
+
+
+                    <div class="team-section section " style="padding-top: 50px;">
+                        <div class="container">
+
+
+                            <div class="row ht-team-member-style-three max-mb-n50">
+
+                                <div class="col-lg-3 col-md-6 col-sm-6 max-mb-50">
+                                    <div class="grid-item ">
+                                        <div class="ht-team-member">
+                                            <div class="team-image">
+                                                <img class="img-fluid" src="{{item.core_image.url}}"
+                                                    alt="">
+                                                <div class="social-networks">
+                                                    <div class="inner">
+                                                        <a target="_blank" href="">{% trans "Read more" %}
+                                                        </a>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="team-info text-center">
+                                                <h3 class="name">{% if LANGUAGE_CODE == 'en' %}{{core.core_name}}
+                                                    {% elif LANGUAGE_CODE == 'ar' %}{{core.core_name_ar}}
+                                                    {% elif LANGUAGE_CODE == 'de' %}{{core.core_name_dr}}{% endif %}
+                                                </h3>
+                                                <div class="position">{% if LANGUAGE_CODE == 'en' %}{{core.core_name}}
+                                                    {% elif LANGUAGE_CODE == 'ar' %}{{core.core_name_ar}}
+                                                    {% elif LANGUAGE_CODE == 'de' %}{{core.core_name_dr}}{% endif %}
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class=" section-padding section">
+    <div class="container">
+
+
+        <div class="row">
+            <div class="col-12">
+                <div class="event-content">
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section section-padding-bottom" style="padding-top: 50px;">
+    <div class="container">
+
+        <!--  media Bar Start -->
+        <div class="row justify-content-between align-items-center max-mb-20">
+            <div class="col-sm-auto col-12 max-mb-10">
+                <p class="result-count">{% trans "Latest Media" %}</p>
+            </div>
+
+        </div>
+        <!-- media Top Bar End -->
+
+        <!-- media  Start -->
+        <div class="row row-cols-xl-4 row-cols-lg-2 row-cols-md-2 row-cols-1 max-mb-n30">
+            {% for item in media  %}
+            {% if forloop.counter < 5 %} 
+            <div class="col max-mb-30">
+                <div class="media-6">
+                    <div class="thumbnail">
+                        <a class="image" href="{% url 'media:media_detail' item.id %}">
+                            <img src="{{item.media_image.url}}" height="350px" style="object-fit: cover;" alt="">
+                            <div class="media-overlay-bg"></div>
+                        </a>
+                    </div>
+                    <div class="info">
+                        <div class="media-caption-main">
+                            <a class="category" style="color: white;"> {% if LANGUAGE_CODE == 'en' %}{{ item.category.en_name }}
+                                {% elif LANGUAGE_CODE == 'ar' %} {{ item.category.ar_name }}
+                                {% elif LANGUAGE_CODE == 'de' %} {{ item.category.dr_name }}{% endif %}</a>
+                            <ul class="meta">
+                                <li><i class="far fa-map-marker-alt"></i> {% if LANGUAGE_CODE == 'en' %}{{ item.media_location }}
+                                    {% elif LANGUAGE_CODE == 'ar' %} {{ item.media_location_ar }}
+                                    {% elif LANGUAGE_CODE == 'de' %} {{ item.media_location_dr }}{% endif %}</li>
+                                <li><i class="far fa-calendar"></i>{{item.date|date:'d M o'}}</li>
+                            </ul>
+                            <h3 class="title"><a href="{% url 'media:media_detail' item.id %}"> {% if LANGUAGE_CODE == 'en' %}{{ item.media_name }}
+                                {% elif LANGUAGE_CODE == 'ar' %} {{ item.media_name_ar }}
+                                {% elif LANGUAGE_CODE == 'de' %} {{ item.media_name_dr }}{% endif %}</a></h3>
+                        </div>
+                        <div class="media-caption-collapse">
+                           
+                            <div class="desc">
+                                <p> {% if LANGUAGE_CODE == 'en' %}{{ item.media_desc1 }}
+                                    {% elif LANGUAGE_CODE == 'ar' %} {{ item.media_desc1_ar }}
+                                    {% elif LANGUAGE_CODE == 'de' %} {{ item.media_desc1_dr }}{% endif %}…</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+         
+            {% endif %} {% endfor %}
+
+
+        </div>
+        <!-- media  End -->
+
+
+        <div class="row max-mt-50">
+            <div class="col text-center">
+                <a href="{% url 'media:media' %}" class="btn btn-outline-primary load-more-btn">{% trans "Read More" %} <i
+                        class="far fa-long-arrow-right ms-3"></i></a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock body %}

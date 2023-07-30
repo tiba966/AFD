@@ -1,0 +1,405 @@
+{% extends 'base.html' %}
+{% block body %}
+{% load static %}
+
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+<!-- Page Banner Slider Start -->
+
+<div class="page-banner-slider section">
+    <div class="banner-slider swiper-container">
+        <div class="swiper-wrapper">
+            {% for slider in slider_show %}
+
+            <div class="swiper-slide">
+
+                <!--Banner Slider Item start-->
+                <div class="banner-slider-item { % if forloop.counter0 == 0 %} active {% endif % }"
+                    data-bg-image="'{{slider.slide_image_index.url}}'">
+                    <div class="container">
+                        <div class="row row-25 banner-content-area">
+                            <div class="col-lg-4">
+                                <div class="banner-slider-content-2 right">
+                                    <h1>SPREAD<br> PEACE AMONG <br>YOU </h1>
+                                </div>
+                            </div>
+                            <div class="col-lg-8">
+
+                                <!--Banner Slider Content start-->
+                                <div class="banner-slider-content-2 left">
+                                    <h3>
+                                        <span class="number">{% if LANGUAGE_CODE == 'en' %}{{slider.slide_num_index}}
+                                            {% elif LANGUAGE_CODE == 'ar' %}{{slider.slide_num_index_ar}}
+                                            {% elif LANGUAGE_CODE == 'de' %}{{slider.slide_num_index_dr}}{% endif %}</span>
+                                        <span class="line"></span>
+                                        {% if LANGUAGE_CODE == 'en' %}{{slider.slide_title_index}}
+                                        {% elif LANGUAGE_CODE == 'ar' %}{{slider.slide_title_index_ar}}
+                                        {% elif LANGUAGE_CODE == 'de' %}{{slider.slide_title_index_dr}}{% endif %}
+                                    </h3>
+                                    <p>{% if LANGUAGE_CODE == 'en' %}{{slider.slide_dsc_index}}
+                                        {% elif LANGUAGE_CODE == 'ar' %}{{slider.slide_dsc_index_ar}}
+                                        {% elif LANGUAGE_CODE == 'de' %}{{slider.slide_dsc_index_dr}}{% endif %}</p>
+                                </div>
+                                <!--Banner Slider Content end-->
+
+                            </div>
+                        </div>
+                    </div>
+
+                <!--Banner Slider Item end-->
+
+            </div>
+        </div>            {% endfor %}
+
+        </div>
+
+        <div class="banner-slider-prev swiper-button-prev banner-slider-nav"><i class="fal fa-angle-left"></i>
+        </div>
+        <div class="banner-slider-next swiper-button-next banner-slider-nav"><i class="fal fa-angle-right"></i>
+        </div>
+
+    </div>
+</div>
+<!-- Page Banner Slider End -->
+
+
+<!-- About  Section Start -->
+<div class="about section position-relative section-padding-top section-padding-bottom-160">
+
+    <div class="container">
+        {% for i in data %}
+        <div class="row align-items-center">
+            <div class="col-lg-7">
+                <div class="about-content max-width-100 pl-60 pl-md-20 pl-sm-0 pl-xs-0 mt-sm-50 mt-xs-50">
+                    <span class="sub-title">{% trans "Since" %} <strong>2015</strong></span>
+                    <h2 class="title">Ashor <span>{% trans "Iraq Foundation" %} </span> </h2>
+                    <p>{% if LANGUAGE_CODE == 'en' %}{{i.text_about_index}}
+                        {% elif LANGUAGE_CODE == 'ar' %}{{i.text_about_index_ar}}
+                        {% elif LANGUAGE_CODE == 'de' %}{{i.text_about_index_dr}}{% endif %}</p>
+                    <a class="link link-lg" href="{% url 'about:about' %}"><mark>{% trans "Read more" %} <i
+                                class="far fa-long-arrow-right"></i></mark></a>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="row row-cols-sm-2 row-cols-1 max-mb-n30">
+
+                    <!-- Funfact Start -->
+                    <div class="col max-mb-60" data-aos="fade-up">
+                        <div class="funfact">
+                            <div class="number"><span class="counter">{{i.num_employee_index}}</span></div>
+                            <h6 class="text">{% trans "Employee" %}</h6>
+                        </div>
+                    </div>
+                    <!-- Funfact End -->
+
+                    <!-- Funfact Start -->
+                    <div class="col max-mb-60" data-aos="fade-up">
+                        <div class="funfact">
+                            <div class="number"><span class="counter">{{i.num_project_index}}</span>+</div>
+                            <h6 class="text">{% trans "Projects" %}</h6>
+                        </div>
+                    </div>
+                    <!-- Funfact End -->
+
+                    <!-- Funfact Start -->
+                    <div class="col max-mb-60" data-aos="fade-up">
+                        <div class="funfact">
+                            <div class="number"><span class="counter">{{i.num_benefi_index}}</span>k</div>
+                            <h6 class="text">{% trans "Beneficiaries" %}</h6>
+                        </div>
+                    </div>
+                    <!-- Funfact End -->
+
+                    <!-- Funfact Start -->
+                    <div class="col max-mb-60" data-aos="fade-up">
+                        <div class="funfact">
+                            <div class="number"><span class="counter">{{i.num_volunteer_index}}</span></div>
+                            <h6 class="text">{% trans "Volunteers" %}</h6>
+                        </div>
+                    </div>
+                    <!-- Funfact End -->
+
+                </div>
+            </div>
+
+
+        </div>
+        {% endfor %}
+    </div>
+
+
+
+</div>
+<!-- About  Section End -->
+
+<!-- Line  Section Start -->
+
+<div class="about-section section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="event-content">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Line  Section End -->
+
+<!-- Video Section  -->
+<div class="about-video-section section position-relative section-padding-top section-padding-bottom-160">
+
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-12">
+                <!-- Video Wrapper Start -->
+                <div class="about-me-video-wrapper about-us-one-video">
+
+                    <!-- Video Start -->
+                    <div class="embed-responsive embed-responsive-16by9">
+                        
+                        <div class="overview-course-video">
+                            <iframe class="embed-responsive-item" width="560" height="315" src="https://www.youtube.com/embed/F-Tbpi8sNb4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen allow="autoplay; encrypted-media"></iframe>                          </div>
+                          
+                          
+                    </div>
+                    <!-- Video End -->
+
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+</div>
+<!--  Video Section End -->
+<!-- Line  Section Start -->
+
+<div class="about-section section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="event-content">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Line  Section End -->
+
+<!-- themes Section Start -->
+<div class=" section fix section-padding position-relative">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="newsletter-content">
+                    <h2 class="title fz-48">{% trans "Our" %} <span>{% trans "Themes" %}</span></h2>
+                    {% for i in data %}
+
+                    <p>{% if LANGUAGE_CODE == 'en' %}{{i.text_themes_index}}
+                        {% elif LANGUAGE_CODE == 'ar' %}{{i.text_themes_index_ar}} {% elif LANGUAGE_CODE == 'de' %}{{i.text_themes_index_dr}}{% endif %}</p>
+                        {% endfor %}
+
+                    <a class="link link-lg" href="{% url 'what_we_are_doing:themes' %}"> <mark>{% trans "read more" %} <i
+                                class="far fa-long-arrow-right"></i></mark></a>
+                    <div class="row row-cols-xl-3 row-cols-sm-2 row-cols-1 max-mb-n30"
+                        style="padding-top: 15px;">
+                       {% for theme in themes %}
+                       {% if forloop.counter < 4 %} <!--Service Block-->
+
+            <!-- themes Start (Icon Box) -->
+            <div class="col max-mb-30" data-aos="fade-up">
+                
+                <a href="{% url 'what_we_are_doing:themes_details' theme.id %}" class="icon-box text-center" data-vivus-hover>
+                    <div class="icon"><img class="" src="{{ theme.themes_icons.url}}" alt="" width="100px" height="100px">
+                    </div>
+                    <div class="content">
+                        <h3 class="title"> {% if LANGUAGE_CODE == 'en' %}{{theme.themes_title}}
+                            {% elif LANGUAGE_CODE == 'ar' %}{{theme.themes_title_ar}}
+                            {% elif LANGUAGE_CODE == 'de' %}{{theme.themes_title_dr}}{% endif %}
+                      </h3>
+                        <div class="desc">
+
+                        </div>
+                        <span class="link">{% trans "THEMES" %} <i class="far fa-long-arrow-right"></i></span>
+                    </div>
+                </a>
+            </div>
+            <!-- themes Start (Icon Box) -->
+            {% endif %}
+
+            {% endfor %}
+                  
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+<!-- donate Section Start -->
+<div class="section section section-padding" data-bg-color="#f5f5f5">
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="cta-content text-center">
+                <span class="sub-title">{% trans "Become a vital part of" %} <span>{% trans "Ashuor Iraqi Foundation for Relief and Development" %}</span></span>
+                <h2 class="title">& {% trans "make a real difference to lives of many!" %}</h2>
+                <div class="row max-mt-50">
+                    <div class="col text-center">
+                        <a href="{% url 'get_involved:donate' %}"
+                            class="btn btn-outline-primary learn-more-btn btn-hover-secondary margin-15">{% trans "Donate" %}
+                        </a>
+                        <a href="{% url 'get_involved:volunteer' %}" class="btn btn-primary btn-hover-secondary margin-15"> {% trans "join us as volunteer" %} </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+<!-- media Section Start -->
+<div class="blog-section section section-padding">
+<div class="container">
+    <div class="row row-cols-xl-2 row-cols-lg-2 row-cols-md-2 row-cols-1 max-mb-n30 ">
+
+        <div class="col-lg-4 max-mb-30" data-aos="fade-up">
+            <div class="blog-list-post-wrapper">
+                <!-- Section Title Start -->
+                <div class="section-title text-left mt-25 mb-25">
+                    <span class="sub-title">{% trans "READ FOR MORE insights" %}</span>
+                    <h2 class="title">{% trans "Latest" %} <span> {% trans "Media" %}</span></h2>
+                    {% for i in data %}
+
+                    <p>{% if LANGUAGE_CODE == 'en' %}{{i.text_media_index}}
+                        {% elif LANGUAGE_CODE == 'ar' %}{{i.text_media_index_ar}}
+                        {% elif LANGUAGE_CODE == 'de' %}{{i.text_media_index_dr}}{% endif %}</p>
+                        {% endfor %}
+                    <a class="link link-lg" href="{% url 'media:media' %}"><mark>{% trans "Read more" %} <i
+                                class="far fa-long-arrow-right"></i></mark></a>
+                </div>
+                <!-- Section Title End -->
+
+            </div>
+        </div>
+     
+        <div class="col-lg-8 max-mb-30" data-aos="fade-up">
+            <div class="row row-cols-xl-3 row-cols-lg-2 row-cols-md-2 row-cols-1 max-mb-n30">
+                {% for item in media  %}
+                {% if forloop.counter < 4 %} 
+                <div class=" col-lg-4 col-md-6 col-sm-12">
+               
+                    <div class="col max-mb-30">
+                        <div class="media-6">
+                            <div class="thumbnail">
+                                <a class="image" href="{% url 'media:media_detail' item.id %}">
+                                    <img src="{{item.media_image.url}}" alt="" height="350px" style="object-fit: cover;">
+                                    <div class="media-overlay-bg"></div>
+                                </a>
+                            </div>
+                            <div class="info">
+                                <div class="media-caption-main">
+                                    <a class="category" style="color: white;"> {% if LANGUAGE_CODE == 'en' %}{{ blog.category.en_name }}
+                                        {% elif LANGUAGE_CODE == 'ar' %} {{ blog.category.ar_name }}{% endif %}</a>
+                                    <ul class="meta">
+                                        <li><i class="far fa-map-marker-alt"></i> {% if LANGUAGE_CODE == 'en' %}{{ item.media_location }}
+                                            {% elif LANGUAGE_CODE == 'ar' %} {{ item.media_location_ar }}{% endif %}</li>
+                                        <li><i class="far fa-calendar"></i>{{item.date|date:'d M o'}}</li>
+                                    </ul>
+                                    <h3 class="title" style="  display: -webkit-box;
+                                    -webkit-line-clamp: 4;
+                                    -webkit-box-orient: vertical;
+                                    overflow: hidden;"><a href="{% url 'media:media_detail' item.id %}"> {% if LANGUAGE_CODE == 'en' %}{{ item.media_name }}
+                                        {% elif LANGUAGE_CODE == 'ar' %} {{ item.media_name }}{% endif %}</a></h3>
+                                </div>
+                                <div class="media-caption-collapse">
+                                   
+                                    <div class="desc">
+                                        <p style="  display: -webkit-box;
+                                        -webkit-line-clamp: 3;
+                                        -webkit-box-orient: vertical;
+                                        overflow: hidden;"> {% if LANGUAGE_CODE == 'en' %}{{ item.media_desc1 }}
+                                            {% elif LANGUAGE_CODE == 'ar' %} {{ item.media_desc1 }}{% endif %}…</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+              </div>
+              {% endif %} {% endfor %}
+
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+    </div>
+</div>
+</div>
+</div>
+<!-- Blog Section End -->
+<div class="about-section section">
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="event-content">
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!-- Brand Section Start -->
+<div class="brand-section section section-padding">
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="brand-wrapper">
+                <div class="brand-list">
+                    <div class="brand-carousel swiper-container" data-aos="fade-up">
+                        <div class="swiper-wrapper">
+                           
+                            {% for item in logo %}
+
+                            <div class="swiper-slide brand">
+                                <img src="{{item.image_partener.url}}">
+                            </div>
+
+                            {% endfor %}
+                           
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!-- Brand Section End -->
+{% endblock body %}
